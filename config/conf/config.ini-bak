@@ -1,0 +1,9 @@
+[mysql]
+username=root
+password=asdlkjCS123..
+url=(127.0.0.1:6033)/crd
+
+[redis]
+host=127.0.0.1
+port=9736
+password=asdlkjCS123..

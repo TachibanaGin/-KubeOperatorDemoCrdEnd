@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lhcz-demo-crd-end
+  namespace: beijing
+spec:
+  selector:
+    matchLabels:
+      run: lhcz-demo-crd-end
+  template:
+    metadata:
+      labels:
+        run: lhcz-demo-crd-end
+    spec:
+      containers:
+        - name: lhcz-demo-crd-end
+          image: registry.cn-qingdao.aliyuncs.com/fuck-k8s/lhcz-demo-crd-end:v1
+          ports:
+            - name: httpd
+              containerPort: 7777
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lhcz-demo-crd-end
+  namespace: beijing
+spec:
+  selector:
+    run: lhcz-demo-crd-end
+  #  type: NodePort
+  ports:
+    - name: httpd
+      #      nodePort: 30012
+      port: 8080
+      targetPort: 7777
